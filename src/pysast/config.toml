@@ -1,0 +1,33 @@
+[analysis]
+max_call_depth = 8
+max_contexts = 32
+max_alternatives = 8
+max_string_parts = 32
+max_list_items = 32
+max_chars = 32
+widen_after = 3
+function_budget = 6000
+exclude = []
+
+[rules]
+enable = []
+disable = []
+weak_random = "sensitive"
+sensitive_names = ["session", "token", "secret", "passw", "pwd", "key", "nonce", "salt", "csrf", "otp", "auth", "cookie", "remember", "reset", "apikey", "verif", "pin"]
+argument_injection = false
+
+[report]
+format = "text"
+min_severity = "low"
+max_trace_steps = 10
+
+[models]
+files = []
+
+[bench]
+owasp_repo = "https://github.com/OWASP-Benchmark/BenchmarkPython"
+owasp_commit = "f1291485808b66e20ddb6b01b10dc71b3df8c8ba"
+semgrep_rules_repo = "https://github.com/semgrep/semgrep-rules"
+semgrep_rules_commit = "17e31e11ebac99fb7dfe1cd288f7a32151b6f3f9"
+cache_dir = ".bench"
+split_at = 615

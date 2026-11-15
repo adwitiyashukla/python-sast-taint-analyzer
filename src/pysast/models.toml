@@ -1,0 +1,262 @@
+[source]
+"flask.request.args" = "request.args"
+"flask.request.form" = "request.form"
+"flask.request.values" = "request.values"
+"flask.request.cookies" = "request.cookies"
+"flask.request.headers" = "request.headers"
+"flask.request.files" = "request.files"
+"flask.request.json" = "request.json"
+"flask.request.data" = "request.data"
+"flask.request.query_string" = "request.query_string"
+"flask.request.stream" = "request.stream"
+"flask.request.environ" = "request.environ"
+"flask.request.full_path" = "request.full_path"
+"flask.request.path" = "request.path"
+"flask.request.url" = "request.url"
+"flask.request.base_url" = "request.base_url"
+"flask.request.host" = "request.host"
+"flask.request.referrer" = "request.referrer"
+"flask.request.user_agent" = "request.user_agent"
+"flask.request.authorization" = "request.authorization"
+"flask.request.view_args" = "request.view_args"
+"flask.request.input_stream" = "request.input_stream"
+"flask.request.get_json" = "request.get_json"
+"flask.request.get_data" = "request.get_data"
+"$request.django.GET" = "request.GET"
+"$request.django.POST" = "request.POST"
+"$request.django.COOKIES" = "request.COOKIES"
+"$request.django.META" = "request.META"
+"$request.django.FILES" = "request.FILES"
+"$request.django.body" = "request.body"
+"$request.django.headers" = "request.headers"
+"$request.django.path" = "request.path"
+"$request.django.path_info" = "request.path_info"
+"$request.django.data" = "request.data"
+"$request.django.query_params" = "request.query_params"
+"$request.django.get_full_path" = "request.get_full_path"
+"$request.django.build_absolute_uri" = "request.build_absolute_uri"
+"$request.starlette.query_params" = "request.query_params"
+"$request.starlette.path_params" = "request.path_params"
+"$request.starlette.headers" = "request.headers"
+"$request.starlette.cookies" = "request.cookies"
+"$request.starlette.url" = "request.url"
+"$request.starlette.body" = "request.body"
+"$request.starlette.json" = "request.json"
+"$request.starlette.form" = "request.form"
+"$request.starlette.stream" = "request.stream"
+
+[sink]
+"dbapi.Cursor.execute" = { rule = "sqli", mode = "sql", args = [0], kwargs = ["sql", "operation", "query"] }
+"dbapi.Cursor.executemany" = { rule = "sqli", mode = "sql", args = [0], kwargs = ["sql", "operation", "query"] }
+"dbapi.Cursor.executescript" = { rule = "sqli", mode = "sql", args = [0], kwargs = ["sql_script"] }
+"dbapi.Connection.execute" = { rule = "sqli", mode = "sql", args = [0], kwargs = ["sql"] }
+"dbapi.Connection.executemany" = { rule = "sqli", mode = "sql", args = [0], kwargs = ["sql"] }
+"dbapi.Connection.executescript" = { rule = "sqli", mode = "sql", args = [0], kwargs = ["sql_script"] }
+"sqlalchemy.text" = { rule = "sqli", mode = "sql", args = [0], kwargs = ["text"] }
+"sqlalchemy.sql.text" = { rule = "sqli", mode = "sql", args = [0], kwargs = ["text"] }
+"sqlalchemy.Engine.execute" = { rule = "sqli", mode = "sql", args = [0], kwargs = [] }
+"pandas.read_sql" = { rule = "sqli", mode = "sql", args = [0], kwargs = ["sql"] }
+"pandas.read_sql_query" = { rule = "sqli", mode = "sql", args = [0], kwargs = ["sql"] }
+"django.db.models.expressions.RawSQL" = { rule = "sqli", mode = "sql", args = [0], kwargs = ["sql"] }
+"ldap3.Connection.search" = { rule = "ldapi", mode = "ldap", args = [1], kwargs = ["search_filter"] }
+"ldap.LDAPObject.search_s" = { rule = "ldapi", mode = "ldap", args = [2], kwargs = ["filterstr"] }
+"ldap.LDAPObject.search" = { rule = "ldapi", mode = "ldap", args = [2], kwargs = ["filterstr"] }
+"ldap.LDAPObject.search_ext_s" = { rule = "ldapi", mode = "ldap", args = [2], kwargs = ["filterstr"] }
+"lxml.etree._ElementTree.xpath" = { rule = "xpathi", mode = "xpath", args = [0], kwargs = ["_path"] }
+"lxml.etree._Element.xpath" = { rule = "xpathi", mode = "xpath", args = [0], kwargs = ["_path"] }
+"lxml.etree._ElementTree.find" = { rule = "xpathi", mode = "xpath", args = [0], kwargs = ["path"] }
+"lxml.etree._ElementTree.findall" = { rule = "xpathi", mode = "xpath", args = [0], kwargs = ["path"] }
+"lxml.etree._Element.find" = { rule = "xpathi", mode = "xpath", args = [0], kwargs = ["path"] }
+"lxml.etree._Element.findall" = { rule = "xpathi", mode = "xpath", args = [0], kwargs = ["path"] }
+"lxml.etree.XPath" = { rule = "xpathi", mode = "xpath", args = [0], kwargs = ["path"] }
+"lxml.etree.ETXPath" = { rule = "xpathi", mode = "xpath", args = [0], kwargs = ["path"] }
+"elementpath.select" = { rule = "xpathi", mode = "xpath", args = [1], kwargs = ["path"] }
+"elementpath.iter_select" = { rule = "xpathi", mode = "xpath", args = [1], kwargs = ["path"] }
+"elementpath.Selector" = { rule = "xpathi", mode = "xpath", args = [0], kwargs = ["path"] }
+"xml.etree.ElementTree.ElementTree.find" = { rule = "xpathi", mode = "xpath", args = [0], kwargs = ["path"] }
+"xml.etree.ElementTree.ElementTree.findall" = { rule = "xpathi", mode = "xpath", args = [0], kwargs = ["path"] }
+"xml.etree.ElementTree.ElementTree.iterfind" = { rule = "xpathi", mode = "xpath", args = [0], kwargs = ["path"] }
+"xml.etree.ElementTree.Element.find" = { rule = "xpathi", mode = "xpath", args = [0], kwargs = ["path"] }
+"xml.etree.ElementTree.Element.findall" = { rule = "xpathi", mode = "xpath", args = [0], kwargs = ["path"] }
+"xml.etree.ElementTree.Element.iterfind" = { rule = "xpathi", mode = "xpath", args = [0], kwargs = ["path"] }
+"pickle.loads" = { rule = "deserialization", mode = "any", args = [0], kwargs = ["data"] }
+"pickle.load" = { rule = "deserialization", mode = "any", args = [0], kwargs = ["file"] }
+"pickle.Unpickler" = { rule = "deserialization", mode = "any", args = [0], kwargs = ["file"] }
+"_pickle.loads" = { rule = "deserialization", mode = "any", args = [0], kwargs = [] }
+"dill.loads" = { rule = "deserialization", mode = "any", args = [0], kwargs = [] }
+"cloudpickle.loads" = { rule = "deserialization", mode = "any", args = [0], kwargs = [] }
+"jsonpickle.decode" = { rule = "deserialization", mode = "any", args = [0], kwargs = ["string"] }
+"marshal.loads" = { rule = "deserialization", mode = "any", args = [0], kwargs = [] }
+"pandas.read_pickle" = { rule = "deserialization", mode = "any", args = [0], kwargs = ["filepath_or_buffer"] }
+"yaml.unsafe_load" = { rule = "deserialization", mode = "any", args = [0], kwargs = ["stream"] }
+"yaml.unsafe_load_all" = { rule = "deserialization", mode = "any", args = [0], kwargs = ["stream"] }
+"flask.redirect" = { rule = "open-redirect", mode = "redirect", args = [0], kwargs = ["location"] }
+"werkzeug.utils.redirect" = { rule = "open-redirect", mode = "redirect", args = [0], kwargs = ["location"] }
+"django.shortcuts.redirect" = { rule = "open-redirect", mode = "redirect", args = [0], kwargs = ["to"] }
+"django.http.HttpResponseRedirect" = { rule = "open-redirect", mode = "redirect", args = [0], kwargs = ["redirect_to"] }
+"django.http.HttpResponsePermanentRedirect" = { rule = "open-redirect", mode = "redirect", args = [0], kwargs = ["redirect_to"] }
+"fastapi.responses.RedirectResponse" = { rule = "open-redirect", mode = "redirect", args = [0], kwargs = ["url"] }
+"starlette.responses.RedirectResponse" = { rule = "open-redirect", mode = "redirect", args = [0], kwargs = ["url"] }
+"flask.render_template_string" = { rule = "ssti", mode = "template", args = [0], kwargs = ["source"] }
+"jinja2.Template" = { rule = "ssti", mode = "template", args = [0], kwargs = ["source"] }
+"jinja2.Environment.from_string" = { rule = "ssti", mode = "template", args = [0], kwargs = ["source"] }
+"mako.template.Template" = { rule = "ssti", mode = "template", args = [0], kwargs = ["text"] }
+"django.http.HttpResponse" = { rule = "xss", mode = "html", args = [0], kwargs = ["content"] }
+"django.utils.safestring.mark_safe" = { rule = "xss", mode = "html", args = [0], kwargs = ["s"] }
+"fastapi.responses.HTMLResponse" = { rule = "xss", mode = "html", args = [0], kwargs = ["content"] }
+"starlette.responses.HTMLResponse" = { rule = "xss", mode = "html", args = [0], kwargs = ["content"] }
+"markupsafe.Markup" = { rule = "xss", mode = "html", args = [0], kwargs = ["base"] }
+"flask.Markup" = { rule = "xss", mode = "html", args = [0], kwargs = ["base"] }
+"requests.get" = { rule = "ssrf", mode = "ssrf", args = [0], kwargs = ["url"] }
+"requests.post" = { rule = "ssrf", mode = "ssrf", args = [0], kwargs = ["url"] }
+"requests.put" = { rule = "ssrf", mode = "ssrf", args = [0], kwargs = ["url"] }
+"requests.patch" = { rule = "ssrf", mode = "ssrf", args = [0], kwargs = ["url"] }
+"requests.delete" = { rule = "ssrf", mode = "ssrf", args = [0], kwargs = ["url"] }
+"requests.head" = { rule = "ssrf", mode = "ssrf", args = [0], kwargs = ["url"] }
+"requests.options" = { rule = "ssrf", mode = "ssrf", args = [0], kwargs = ["url"] }
+"requests.request" = { rule = "ssrf", mode = "ssrf", args = [1], kwargs = ["url"] }
+"requests.Session.get" = { rule = "ssrf", mode = "ssrf", args = [0], kwargs = ["url"] }
+"requests.Session.post" = { rule = "ssrf", mode = "ssrf", args = [0], kwargs = ["url"] }
+"requests.Session.request" = { rule = "ssrf", mode = "ssrf", args = [1], kwargs = ["url"] }
+"httpx.get" = { rule = "ssrf", mode = "ssrf", args = [0], kwargs = ["url"] }
+"httpx.post" = { rule = "ssrf", mode = "ssrf", args = [0], kwargs = ["url"] }
+"httpx.request" = { rule = "ssrf", mode = "ssrf", args = [1], kwargs = ["url"] }
+"httpx.Client.get" = { rule = "ssrf", mode = "ssrf", args = [0], kwargs = ["url"] }
+"httpx.AsyncClient.get" = { rule = "ssrf", mode = "ssrf", args = [0], kwargs = ["url"] }
+"urllib.request.urlopen" = { rule = "ssrf", mode = "ssrf", args = [0], kwargs = ["url"] }
+"urllib.request.Request" = { rule = "ssrf", mode = "ssrf", args = [0], kwargs = ["url"] }
+"urllib3.PoolManager.request" = { rule = "ssrf", mode = "ssrf", args = [1], kwargs = ["url"] }
+"aiohttp.ClientSession.get" = { rule = "ssrf", mode = "ssrf", args = [0], kwargs = ["url"] }
+"aiohttp.ClientSession.post" = { rule = "ssrf", mode = "ssrf", args = [0], kwargs = ["url"] }
+"os.remove" = { rule = "path-traversal", mode = "path", args = [0], kwargs = ["path"] }
+"os.unlink" = { rule = "path-traversal", mode = "path", args = [0], kwargs = ["path"] }
+"os.rmdir" = { rule = "path-traversal", mode = "path", args = [0], kwargs = ["path"] }
+"os.mkdir" = { rule = "path-traversal", mode = "path", args = [0], kwargs = ["path"] }
+"os.makedirs" = { rule = "path-traversal", mode = "path", args = [0], kwargs = ["name"] }
+"os.listdir" = { rule = "path-traversal", mode = "path", args = [0], kwargs = ["path"] }
+"os.scandir" = { rule = "path-traversal", mode = "path", args = [0], kwargs = ["path"] }
+"os.stat" = { rule = "path-traversal", mode = "path", args = [0], kwargs = ["path"] }
+"os.chmod" = { rule = "path-traversal", mode = "path", args = [0], kwargs = ["path"] }
+"os.chown" = { rule = "path-traversal", mode = "path", args = [0], kwargs = ["path"] }
+"os.rename" = { rule = "path-traversal", mode = "path", args = [0, 1], kwargs = ["src", "dst"] }
+"os.replace" = { rule = "path-traversal", mode = "path", args = [0, 1], kwargs = ["src", "dst"] }
+"os.open" = { rule = "path-traversal", mode = "path", args = [0], kwargs = ["path"] }
+"os.walk" = { rule = "path-traversal", mode = "path", args = [0], kwargs = ["top"] }
+"os.path.exists" = { rule = "path-traversal", mode = "path", args = [0], kwargs = ["path"] }
+"os.path.isfile" = { rule = "path-traversal", mode = "path", args = [0], kwargs = ["path"] }
+"os.path.isdir" = { rule = "path-traversal", mode = "path", args = [0], kwargs = ["s"] }
+"os.path.getsize" = { rule = "path-traversal", mode = "path", args = [0], kwargs = ["filename"] }
+"os.path.getmtime" = { rule = "path-traversal", mode = "path", args = [0], kwargs = ["filename"] }
+"shutil.copy" = { rule = "path-traversal", mode = "path", args = [0, 1], kwargs = ["src", "dst"] }
+"shutil.copyfile" = { rule = "path-traversal", mode = "path", args = [0, 1], kwargs = ["src", "dst"] }
+"shutil.move" = { rule = "path-traversal", mode = "path", args = [0, 1], kwargs = ["src", "dst"] }
+"shutil.rmtree" = { rule = "path-traversal", mode = "path", args = [0], kwargs = ["path"] }
+"flask.send_file" = { rule = "path-traversal", mode = "path", args = [0], kwargs = ["path_or_file"] }
+"django.http.FileResponse" = { rule = "path-traversal", mode = "path", args = [0], kwargs = [] }
+"fastapi.responses.FileResponse" = { rule = "path-traversal", mode = "path", args = [0], kwargs = ["path"] }
+"starlette.responses.FileResponse" = { rule = "path-traversal", mode = "path", args = [0], kwargs = ["path"] }
+"os.system" = { rule = "cmdi", mode = "shell", args = [0], kwargs = ["command"] }
+"os.popen" = { rule = "cmdi", mode = "shell", args = [0], kwargs = ["cmd"] }
+"subprocess.getoutput" = { rule = "cmdi", mode = "shell", args = [0], kwargs = ["cmd"] }
+"subprocess.getstatusoutput" = { rule = "cmdi", mode = "shell", args = [0], kwargs = ["cmd"] }
+"asyncio.create_subprocess_shell" = { rule = "cmdi", mode = "shell", args = [0], kwargs = ["cmd"] }
+"commands.getoutput" = { rule = "cmdi", mode = "shell", args = [0], kwargs = [] }
+
+[sanitizer]
+"shlex.quote" = { kinds = ["cmdi"] }
+"pipes.quote" = { kinds = ["cmdi"] }
+"ldap3.utils.conv.escape_filter_chars" = { kinds = ["ldapi"] }
+"ldap.filter.escape_filter_chars" = { kinds = ["ldapi"] }
+"werkzeug.utils.secure_filename" = { allowed = "_.-", kinds = ["path-traversal"] }
+"os.path.basename" = { excl = ["/"], kinds = ["path-traversal"] }
+"django.utils._os.safe_join" = { kinds = ["path-traversal"] }
+"werkzeug.utils.safe_join" = { kinds = ["path-traversal"] }
+"werkzeug.security.safe_join" = { kinds = ["path-traversal"] }
+"flask.helpers.safe_join" = { kinds = ["path-traversal"] }
+"ntpath.basename" = { excl = ["/", "\\"], kinds = ["path-traversal"] }
+"posixpath.basename" = { excl = ["/"], kinds = ["path-traversal"] }
+"markupsafe.escape" = { excl = ["<", ">", "\"", "'"] }
+"markupsafe.escape_silent" = { excl = ["<", ">", "\"", "'"] }
+"flask.escape" = { excl = ["<", ">", "\"", "'"] }
+"django.utils.html.escape" = { excl = ["<", ">", "\"", "'"] }
+"django.utils.html.conditional_escape" = { excl = ["<", ">", "\"", "'"] }
+"bleach.clean" = { kinds = ["xss"] }
+"urllib.parse.quote" = { allowed = "%-._~/" }
+"urllib.parse.quote_plus" = { allowed = "%-._~+" }
+"urllib.parse.urlencode" = { allowed = "%-._~+=&" }
+"defusedxml.ElementTree.fromstring" = { kinds = ["xxe"] }
+"uuid.UUID" = { allowed = "-{}" }
+"ipaddress.ip_address" = { allowed = ".:" }
+
+[returns]
+"sqlite3.connect" = "dbapi.Connection"
+"psycopg2.connect" = "dbapi.Connection"
+"psycopg.connect" = "dbapi.Connection"
+"pymysql.connect" = "dbapi.Connection"
+"MySQLdb.connect" = "dbapi.Connection"
+"mysql.connector.connect" = "dbapi.Connection"
+"cx_Oracle.connect" = "dbapi.Connection"
+"oracledb.connect" = "dbapi.Connection"
+"pyodbc.connect" = "dbapi.Connection"
+"django.db.connection.cursor" = "dbapi.Cursor"
+"dbapi.Connection.cursor" = "dbapi.Cursor"
+"dbapi.Connection.execute" = "dbapi.Cursor"
+"dbapi.Cursor.execute" = "dbapi.Cursor"
+"sqlalchemy.create_engine" = "sqlalchemy.Engine"
+"sqlalchemy.Engine.connect" = "sqlalchemy.Engine"
+"ldap3.Connection" = "ldap3.Connection"
+"ldap.initialize" = "ldap.LDAPObject"
+"lxml.etree.parse" = "lxml.etree._ElementTree"
+"lxml.etree.fromstring" = "lxml.etree._Element"
+"lxml.etree.XML" = "lxml.etree._Element"
+"lxml.etree.HTML" = "lxml.etree._Element"
+"lxml.etree._ElementTree.getroot" = "lxml.etree._Element"
+"lxml.etree.XPath" = "lxml.etree.XPath"
+"xml.etree.ElementTree.parse" = "xml.etree.ElementTree.ElementTree"
+"xml.etree.ElementTree.fromstring" = "xml.etree.ElementTree.Element"
+"xml.etree.ElementTree.XML" = "xml.etree.ElementTree.Element"
+"xml.etree.ElementTree.ElementTree.getroot" = "xml.etree.ElementTree.Element"
+"requests.Session" = "requests.Session"
+"httpx.Client" = "httpx.Client"
+"httpx.AsyncClient" = "httpx.AsyncClient"
+"urllib3.PoolManager" = "urllib3.PoolManager"
+"aiohttp.ClientSession" = "aiohttp.ClientSession"
+"jinja2.Environment" = "jinja2.Environment"
+"hashlib.sha256" = "hashlib.hash"
+"hashlib.sha384" = "hashlib.hash"
+"hashlib.sha512" = "hashlib.hash"
+"hashlib.sha3_256" = "hashlib.hash"
+"hashlib.blake2b" = "hashlib.hash"
+
+[clean]
+names = [
+  "secrets.token_hex", "secrets.token_urlsafe", "secrets.token_bytes", "secrets.randbelow", "secrets.randbits", "secrets.choice",
+  "uuid.uuid4", "uuid.uuid1", "os.urandom", "os.getcwd", "os.getpid", "time.time", "time.monotonic", "datetime.datetime.now",
+  "flask.render_template", "flask.url_for", "flask.jsonify", "django.shortcuts.render", "django.template.loader.render_to_string",
+  "logging.getLogger", "hmac.compare_digest", "secrets.compare_digest",
+  "lxml.etree._ElementTree.write", "dbapi.Cursor.fetchall", "dbapi.Cursor.fetchone", "dbapi.Cursor.fetchmany",
+  "hashlib.hash.hexdigest", "hashlib.hash.digest", "hashlib.hash.update",
+]
+
+[weakrand]
+names = [
+  "random.random", "random.randint", "random.randrange", "random.getrandbits", "random.randbytes", "random.choice",
+  "random.choices", "random.sample", "random.uniform", "random.triangular", "random.betavariate", "random.expovariate",
+  "random.gammavariate", "random.gauss", "random.lognormvariate", "random.normalvariate", "random.vonmisesvariate",
+  "random.paretovariate", "random.weibullvariate", "random.binomialvariate", "random.Random.random", "random.Random.randint",
+  "random.Random.randrange", "random.Random.getrandbits", "random.Random.randbytes", "random.Random.choice",
+  "random.Random.choices", "random.Random.sample", "random.Random.uniform", "random.Random.gauss", "random.Random.normalvariate",
+  "numpy.random.rand", "numpy.random.randint", "numpy.random.random", "numpy.random.bytes",
+]
+
+[const]
+"os.name" = ["posix", "nt"]
+"os.sep" = ["/", "\\"]
+"os.linesep" = ["\n", "\r\n"]
+"sys.platform" = ["linux", "win32", "darwin"]
+"xml.sax.handler.feature_external_ges" = ["http://xml.org/sax/features/external-general-entities"]
+"xml.sax.handler.feature_external_pes" = ["http://xml.org/sax/features/external-parameter-entities"]
+
+[call_const]
+"platform.system" = ["Linux", "Windows", "Darwin"]
+"os.getlogin" = []

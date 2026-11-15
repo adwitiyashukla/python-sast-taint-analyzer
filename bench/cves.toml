@@ -1,0 +1,320 @@
+[selection]
+advisories = "GitHub Advisory Database, PyPI, with a CVE id, published 2020-01-01 to 2026-06-30, a CWE pysast has a rule for and a linked GitHub fix commit or pull request"
+candidates = 1100
+shuffle_seed = 20261019
+reviewed = 112
+max_per_project = 2
+skipped = [
+    { order = 1, cve = "CVE-2020-15271", project = "lookatme", reason = "not a web app" },
+    { order = 2, cve = "CVE-2024-24759", project = "mindsdb", reason = "no identifiable fix" },
+    { order = 3, cve = "CVE-2024-30248", project = "piccolo-admin", reason = "stored XSS, not reflected" },
+    { order = 6, cve = "CVE-2026-29065", project = "changedetection.io", reason = "claimed sink is not exploitable as described" },
+    { order = 8, cve = "CVE-2025-68146", project = "filelock", reason = "pure library (file locking); no HTTP handler" },
+    { order = 9, cve = "CVE-2026-33230", project = "nltk", reason = "not Flask, Django, FastAPI or Starlette" },
+    { order = 10, cve = "CVE-2025-8406", project = "zenml", reason = "no HTTP source" },
+    { order = 11, cve = "CVE-2022-41905", project = "wsgidav", reason = "not Flask, Django, FastAPI or Starlette" },
+    { order = 12, cve = "CVE-2026-24486", project = "python-multipart", reason = "pure library (multipart parser); untrusted data enters through library API arguments, no HTTP handler in the repo" },
+    { order = 13, cve = "CVE-2021-32797", project = "jupyterlab", reason = "XSS in the JupyterLab/Notebook JavaScript frontend; server side is Tornado" },
+    { order = 14, cve = "CVE-2024-12909", project = "llama-index-packs-finchat", reason = "pure library (LlamaIndex pack); SQL built from function arguments, no HTTP handler" },
+    { order = 15, cve = "CVE-2022-0845", project = "pytorch-lightning", reason = "no HTTP source" },
+    { order = 16, cve = "CVE-2025-53890", project = "pyload-ng", reason = "XSS sink is in JavaScript" },
+    { order = 17, cve = "CVE-2024-27290", project = "docassemble.webapp", reason = "stored XSS" },
+    { order = 18, cve = "CVE-2025-30370", project = "jupyterlab-git", reason = "not Flask, Django, FastAPI or Starlette" },
+    { order = 19, cve = "CVE-2023-5689", project = "modoboa", reason = "DOM/template XSS" },
+    { order = 20, cve = "CVE-2022-2111", project = "inventree", reason = "class not in scope" },
+    { order = 21, cve = "CVE-2026-8838", project = "redshift-connector", reason = "pure library (Amazon Redshift DB driver); eval on driver-side data, no HTTP handler" },
+    { order = 23, cve = "CVE-2024-27083", project = "Flask-AppBuilder", reason = "template-only bug" },
+    { order = 24, cve = "CVE-2024-3848", project = "mlflow", reason = "flow passes through the database" },
+    { order = 25, cve = "CVE-2024-39126", project = "roundup", reason = "not Flask, Django, FastAPI or Starlette" },
+    { order = 26, cve = "CVE-2026-57496", project = "netlicensing-mcp", reason = "not an HTTP web handler" },
+    { order = 27, cve = "CVE-2026-25130", project = "cai-framework", reason = "not a web app" },
+    { order = 28, cve = "CVE-2023-37659", project = "xalpha", reason = "pure library (xalpha fund data library); eval on fetched data, no HTTP handler" },
+    { order = 29, cve = "CVE-2022-4729", project = "graphite-web", reason = "stored XSS rendered by frontend JavaScript" },
+    { order = 30, cve = "CVE-2021-40323", project = "cobbler", reason = "not Flask, Django, FastAPI or Starlette and stored flow" },
+    { order = 31, cve = "CVE-2021-34363", project = "thefuck", reason = "not a web app" },
+    { order = 33, cve = "CVE-2024-27287", project = "esphome", reason = "stored XSS (configuration file content saved and later rendered) and not Flask, Django, FastAPI or Starlette (ESPHome dashboard runs on Tornado)" },
+    { order = 34, cve = "CVE-2024-21624", project = "nonebot2", reason = "not a web app" },
+    { order = 35, cve = "CVE-2024-38824", project = "salt", reason = "not Flask, Django, FastAPI or Starlette" },
+    { order = 37, cve = "CVE-2025-30473", project = "apache-airflow-providers-common-sql", reason = "no HTTP handler source" },
+    { order = 39, cve = "CVE-2026-34935", project = "praisonai", reason = "no HTTP source" },
+    { order = 40, cve = "CVE-2020-26275", project = "jupyter-server", reason = "not Flask, Django, FastAPI or Starlette" },
+    { order = 41, cve = "CVE-2022-4527", project = "collective.task", reason = "not Flask, Django, FastAPI or Starlette" },
+    { order = 43, cve = "CVE-2026-12566", project = "bbot", reason = "not a web app" },
+    { order = 44, cve = "CVE-2021-23423", project = "bikeshed", reason = "not a web app" },
+    { order = 46, cve = "CVE-2024-23334", project = "aiohttp", reason = "not Flask, Django, FastAPI or Starlette" },
+    { order = 47, cve = "CVE-2026-0846", project = "nltk", reason = "pure library (nltk.util.filestring); path enters as a function argument, no HTTP handler" },
+    { order = 48, cve = "CVE-2023-48705", project = "nautobot", reason = "stored XSS" },
+    { order = 49, cve = "CVE-2026-34515", project = "aiohttp", reason = "not Flask, Django, FastAPI or Starlette" },
+    { order = 50, cve = "CVE-2026-23949", project = "jaraco.context", reason = "pure library (jaraco.context tarball extraction helper); no HTTP handler" },
+    { order = 51, cve = "CVE-2026-1287", project = "Django", reason = "library API, no HTTP handler" },
+    { order = 52, cve = "CVE-2025-55156", project = "pyload-ng", reason = "flow is not direct" },
+    { order = 54, cve = "CVE-2026-28684", project = "python-dotenv", reason = "pure library (python-dotenv set_key symlink following); no HTTP handler" },
+    { order = 55, cve = "CVE-2021-41127", project = "rasa", reason = "not Flask, Django, FastAPI or Starlette and no direct HTTP flow" },
+    { order = 56, cve = "CVE-2025-62703", project = "fugue", reason = "no real fix" },
+    { order = 58, cve = "CVE-2023-38896", project = "langchain", reason = "pure library (LangChain); code execution from LLM chain inputs, no HTTP handler" },
+    { order = 60, cve = "CVE-2020-13948", project = "apache-superset", reason = "fix does not touch the request-to-render flow" },
+    { order = 61, cve = "CVE-2020-10799", project = "svglib", reason = "pure library (svglib SVG parser); XML enters as a function argument, no HTTP handler" },
+    { order = 63, cve = "CVE-2024-23730", project = "llama-hub", reason = "pure library (llama-hub loaders); YAML enters as a function argument, no HTTP handler" },
+    { order = 65, cve = "CVE-2023-4033", project = "mlflow", reason = "already 2 cases from this project" },
+    { order = 66, cve = "CVE-2020-6802", project = "bleach", reason = "pure library (bleach HTML sanitizer); no HTTP handler" },
+    { order = 67, cve = "CVE-2025-54384", project = "ckan", reason = "stored XSS" },
+    { order = 68, cve = "CVE-2022-4495", project = "collective.dms.basecontent", reason = "not Flask, Django, FastAPI or Starlette" },
+    { order = 69, cve = "CVE-2023-6909", project = "mlflow", reason = "already 2 cases from this project" },
+    { order = 70, cve = "CVE-2022-4396", project = "pyRdfa3", reason = "not Flask, Django, FastAPI or Starlette" },
+    { order = 71, cve = "CVE-2024-43406", project = "ekuiper", reason = "not Python" },
+    { order = 72, cve = "CVE-2023-2356", project = "mlflow", reason = "already 2 cases from this project" },
+    { order = 73, cve = "CVE-2024-6961", project = "guardrails-ai", reason = "pure library (Guardrails AI XML parsing); no HTTP handler" },
+    { order = 75, cve = "CVE-2025-27145", project = "copyparty", reason = "not Flask, Django, FastAPI or Starlette and stored XSS" },
+    { order = 76, cve = "CVE-2023-23930", project = "vantage6", reason = "flow passes through the database and other processes" },
+    { order = 77, cve = "CVE-2025-6242", project = "vllm", reason = "fix does not change the default flow" },
+    { order = 78, cve = "CVE-2023-6753", project = "mlflow", reason = "already 2 cases from this project" },
+    { order = 80, cve = "CVE-2025-71341", project = "picklescan", reason = "pure library/tool (picklescan pickle scanner); no HTTP handler" },
+    { order = 81, cve = "CVE-2021-25925", project = "sickrage", reason = "not Flask, Django, FastAPI or Starlette" },
+    { order = 82, cve = "CVE-2026-11816", project = "keras", reason = "pure library (Keras archive extraction utilities); no HTTP handler" },
+    { order = 83, cve = "CVE-2025-48459", project = "apache-iotdb", reason = "not a Python web app" },
+    { order = 84, cve = "CVE-2025-70559", project = "pdfminer.six", reason = "pure library (pdfminer.six CMap loader); local file input, no HTTP handler" },
+    { order = 85, cve = "CVE-2024-35198", project = "torchserve", reason = "not Flask, Django, FastAPI or Starlette" },
+    { order = 86, cve = "CVE-2026-40576", project = "excel-mcp-server", reason = "not an HTTP web handler" },
+    { order = 87, cve = "CVE-2026-44889", project = "webob", reason = "pure library (WebOb request/response objects); Location header normalization in library code, no app handler" },
+    { order = 88, cve = "CVE-2026-10222", project = "hermes-agent", reason = "class and source out of scope" },
+    { order = 89, cve = "CVE-2025-27018", project = "apache-airflow-providers-mysql", reason = "no HTTP handler source" },
+    { order = 90, cve = "CVE-2023-6974", project = "mlflow", reason = "already 2 cases from this project" },
+    { order = 91, cve = "CVE-2022-3438", project = "rdiffweb", reason = "not Flask, Django, FastAPI or Starlette" },
+    { order = 92, cve = "CVE-2023-49793", project = "codechecker", reason = "not Flask, Django, FastAPI or Starlette and file hop" },
+    { order = 94, cve = "CVE-2024-0817", project = "paddlepaddle", reason = "pure library (PaddlePaddle); command built from function arguments, no HTTP handler" },
+    { order = 95, cve = "CVE-2019-20916", project = "pip", reason = "pure tool/library (pip); no HTTP handler" },
+    { order = 96, cve = "CVE-2025-50182", project = "urllib3", reason = "pure library (urllib3 redirect handling); no HTTP handler" },
+    { order = 97, cve = "CVE-2024-53999", project = "mobsf", reason = "stored XSS" },
+    { order = 98, cve = "CVE-2022-39348", project = "Twisted", reason = "not Flask, Django, FastAPI or Starlette" },
+    { order = 99, cve = "CVE-2026-26030", project = "semantic-kernel", reason = "pure library (Semantic Kernel InMemoryVectorStore filter); no HTTP handler" },
+    { order = 100, cve = "CVE-2020-15275", project = "moin", reason = "stored XSS via uploaded SVG attachment; MoinMoin 1.9 uses its own WSGI framework" },
+    { order = 101, cve = "CVE-2015-8549", project = "pyamf", reason = "pure library (PyAMF AMF/XML decoding); no Flask/Django/FastAPI handler" },
+    { order = 102, cve = "CVE-2024-11392", project = "transformers", reason = "pure library (Transformers model loading); no HTTP handler" },
+    { order = 103, cve = "CVE-2024-47821", project = "pyload-ng", reason = "not a direct flow" },
+    { order = 104, cve = "CVE-2024-42353", project = "webob", reason = "pure library (WebOb Location header normalization); no app handler" },
+    { order = 105, cve = "CVE-2026-1839", project = "transformers", reason = "pure library (Transformers Trainer checkpoint loading); no HTTP handler" },
+    { order = 107, cve = "CVE-2023-0519", project = "modoboa", reason = "stored XSS (advisory: XSS - Stored); payload is saved and rendered later" },
+    { order = 108, cve = "CVE-2026-32274", project = "black", reason = "not a web app" },
+    { order = 109, cve = "CVE-2023-49297", project = "PyDrive2", reason = "pure library (PyDrive2 settings file loading); no HTTP handler" },
+    { order = 111, cve = "CVE-2021-41281", project = "matrix-synapse", reason = "not Flask, Django, FastAPI or Starlette" },
+]
+
+[[case]]
+order = 4
+cve = "CVE-2023-46134"
+project = "D-Tale (dtale)"
+repo = "https://github.com/man-group/dtale"
+vulnerable = "9d38f9346810f6110d2a43684a532fdfe1be213f"
+fixed = "bf8c54ab2490803f45f0652a9a0e221a94d39668"
+rule = "codeinj"
+entry = ["dtale/views.py:test_filter"]
+sinks = ["dtale/query.py:run_query"]
+
+[[case]]
+order = 5
+cve = "CVE-2024-45601"
+project = "Mesop"
+repo = "https://github.com/google/mesop"
+vulnerable = "6f021e8a1a3e075e705afa94351a6266f20214cc"
+fixed = "17fb769d6a91f0a8cbccfab18f64977b158a6a31"
+rule = "path-traversal"
+entry = ["mesop/server/static_file_serving.py:configure_static_file_serving.serve_web_components"]
+sinks = ["mesop/server/static_file_serving.py:send_file_compressed"]
+
+[[case]]
+order = 7
+cve = "CVE-2023-6831"
+project = "MLflow"
+repo = "https://github.com/mlflow/mlflow"
+vulnerable = "9612ef043d7fe88f3ee899657a1d0fc2faf8ae0f"
+fixed = "1da75dfcecd4d169e34809ade55748384e8af6c1"
+rule = "path-traversal"
+entry = ["mlflow/server/handlers.py:_delete_artifact_mlflow_artifacts"]
+sinks = ["mlflow/store/artifact/local_artifact_repo.py:LocalArtifactRepository.delete_artifacts"]
+
+[[case]]
+order = 22
+cve = "CVE-2024-32005"
+project = "NiceGUI"
+repo = "https://github.com/zauberzeug/nicegui"
+vulnerable = "7c3e01af16dc5166814410c4a609db3ddc1a4cc5"
+fixed = "ed12eb14f2a6c48b388a05c04b3c5a107ea9d330"
+rule = "path-traversal"
+entry = ["nicegui/nicegui.py:_get_resource"]
+sinks = ["nicegui/nicegui.py:_get_resource"]
+
+[[case]]
+order = 32
+cve = "CVE-2024-10833"
+project = "DB-GPT"
+repo = "https://github.com/eosphoros-ai/DB-GPT"
+vulnerable = "b392d51adfbfe84364b83c83b463b7c6fa4312bc"
+fixed = "780ce803e325b87f4ddfbe5824451e379aeee56c"
+rule = "path-traversal"
+entry = ["dbgpt/app/knowledge/api.py:document_upload"]
+sinks = ["dbgpt/app/knowledge/api.py:document_upload"]
+
+[[case]]
+order = 36
+cve = "CVE-2023-5002"
+project = "pgAdmin 4"
+repo = "https://github.com/pgadmin-org/pgadmin4"
+vulnerable = "61fa8b16c90590b59c624e440187441349020e1a"
+fixed = "35f05e49b3632a0a674b9b36535a7fe2d93dd0c2"
+rule = "cmdi"
+entry = ["web/pgadmin/misc/__init__.py:validate_binary_path"]
+sinks = ["web/pgadmin/misc/__init__.py:validate_binary_path"]
+
+[[case]]
+order = 38
+cve = "CVE-2022-24840"
+project = "django-s3file"
+repo = "https://github.com/codingjoe/django-s3file"
+vulnerable = "03f6ff81278a616619726ba3c51a71fec8a9f9e2"
+fixed = "68ccd2c621a40eb66fdd6af2be9d5fcc9c373318"
+rule = "path-traversal"
+entry = ["s3file/middleware.py:S3FileMiddleware.__call__"]
+sinks = ["s3file/middleware.py:S3FileMiddleware.get_files_from_storage"]
+
+[[case]]
+order = 42
+cve = "CVE-2022-0697"
+project = "Archivy"
+repo = "https://github.com/archivy/archivy"
+vulnerable = "fa389e7d59f91980693965830839d6de1f1db45f"
+fixed = "2d8cb29853190d42572b36deb61127e68d6be574"
+rule = "open-redirect"
+entry = ["archivy/routes.py:login"]
+sinks = ["archivy/routes.py:login"]
+
+[[case]]
+order = 45
+cve = "CVE-2026-28786"
+project = "Open WebUI"
+repo = "https://github.com/open-webui/open-webui"
+vulnerable = "0fff2fbcab91611747fbe089964e78d412b6833c"
+fixed = "62ab30f593b1d6f9b2cda0616e49e6ecb7b65703"
+rule = "path-traversal"
+entry = ["backend/open_webui/routers/audio.py:transcription"]
+sinks = ["backend/open_webui/routers/audio.py:transcription"]
+
+[[case]]
+order = 53
+cve = "CVE-2023-1176"
+project = "MLflow"
+repo = "https://github.com/mlflow/mlflow"
+vulnerable = "36c787aa96f14caca40b521e293a5bd2d088685f"
+fixed = "63ef72aa4334a6473ce7f889573c92fcae0b3c0d"
+rule = "path-traversal"
+entry = ["mlflow/server/handlers.py:_get_registered_model"]
+sinks = ["mlflow/store/model_registry/file_store.py:FileStore.get_registered_model", "mlflow/store/model_registry/file_store.py:FileStore._get_registered_model_path"]
+
+[[case]]
+order = 57
+cve = "CVE-2025-55149"
+project = "TinyScientist"
+repo = "https://github.com/ulab-uiuc/tiny-scientist"
+vulnerable = "d0d4d6ed91c378d5201ac60dcd8e7c3303412d66"
+fixed = "7fd42873603012acb8c55a4fc3eaac9ab18e6559"
+rule = "path-traversal"
+entry = ["backend/app.py:review_paper"]
+sinks = ["tiny_scientist/utils/input_formatter.py:InputFormatter._load_paper", "backend/app.py:review_paper"]
+
+[[case]]
+order = 59
+cve = "CVE-2026-29038"
+project = "changedetection.io"
+repo = "https://github.com/dgtlmoon/changedetection.io"
+vulnerable = "417d57e5749441e4be9acc4010369bded805d66f"
+fixed = "ec7d56f85d1e9690fca7cb4711c1fb20dffec780"
+rule = "xss"
+entry = ["changedetectionio/blueprint/rss/tag.py:construct_tag_routes.rss_tag_feed"]
+sinks = ["changedetectionio/blueprint/rss/tag.py:construct_tag_routes.rss_tag_feed"]
+
+[[case]]
+order = 62
+cve = "CVE-2022-1592"
+project = "Scout (scout-browser)"
+repo = "https://github.com/Clinical-Genomics/scout"
+vulnerable = "51a838dd1df58dbb965cd39f6f146a5243ba207a"
+fixed = "b0ef15f4737d0c801154c1991b52ff5cab4f5c83"
+rule = "ssrf"
+entry = ["scout/server/blueprints/alignviewers/views.py:remote_cors"]
+sinks = ["scout/server/blueprints/alignviewers/views.py:remote_cors"]
+
+[[case]]
+order = 64
+cve = "CVE-2026-34244"
+project = "Weblate"
+repo = "https://github.com/WeblateOrg/weblate"
+vulnerable = "1fd47a5176618dfc8a9261ed3237621fd32f6e2a"
+fixed = "e619e9090202e4886b844c110d39308e7e882c0e"
+rule = "ssrf"
+entry = ["weblate/machinery/views.py:EditMachineryView.post", "weblate/machinery/forms.py:BaseMachineryForm.clean"]
+sinks = ["weblate/utils/requests.py:http_request"]
+
+[[case]]
+order = 74
+cve = "CVE-2025-6773"
+project = "LightRAG"
+repo = "https://github.com/HKUDS/LightRAG"
+vulnerable = "44daf515016d30824179ef07b68bf0ad758c3e88"
+fixed = "60777d535b719631680bcf5d0969bdef79ca4eaf"
+rule = "path-traversal"
+entry = ["lightrag/api/routers/document_routes.py:create_document_routes.upload_to_input_dir"]
+sinks = ["lightrag/api/routers/document_routes.py:create_document_routes.upload_to_input_dir"]
+
+[[case]]
+order = 79
+cve = "CVE-2026-33440"
+project = "Weblate"
+repo = "https://github.com/WeblateOrg/weblate"
+vulnerable = "cd149c0189e839c6d04c7a9d8ba020f62b8249b1"
+fixed = "8be80625a864c8db5854503872a65e8a0b7399a6"
+rule = "ssrf"
+entry = ["weblate/screenshots/views.py:ScreenshotList.post", "weblate/screenshots/forms.py:ScreenshotImageValidationMixin.clean_images"]
+sinks = ["weblate/utils/requests.py:http_request", "weblate/screenshots/forms.py:ScreenshotImageValidationMixin.download_image"]
+
+[[case]]
+order = 93
+cve = "CVE-2026-24779"
+project = "vLLM"
+repo = "https://github.com/vllm-project/vllm"
+vulnerable = "d68209402ddab3f54a09bc1f4de9a9495a283b60"
+fixed = "f46d576c54fb8aeec5fc70560e850bed38ef17d7"
+rule = "ssrf"
+entry = ["vllm/entrypoints/openai/api_server.py:create_chat_completion"]
+sinks = ["vllm/connections.py:HTTPConnection.get_async_response", "vllm/connections.py:HTTPConnection.get_response"]
+
+[[case]]
+order = 106
+cve = "CVE-2024-45595"
+project = "D-Tale (dtale)"
+repo = "https://github.com/man-group/dtale"
+vulnerable = "a99d8ebc2b9c646ebba21d5ff5aa2d60509c389f"
+fixed = "b6e30969390520d1400b55acbb13e5487b8472e8"
+rule = "codeinj"
+entry = ["dtale/views.py:get_chart_data"]
+sinks = ["dtale/query.py:run_query"]
+
+[[case]]
+order = 110
+cve = "CVE-2025-62800"
+project = "FastMCP"
+repo = "https://github.com/jlowin/fastmcp"
+vulnerable = "541822f07ff28b196bde09d3818fea0579becd86"
+fixed = "2a20f54617a37213ed83894a8c2f0ac38a2e83a3"
+rule = "xss"
+entry = ["src/fastmcp/client/oauth_callback.py:create_oauth_callback_server.callback_handler"]
+sinks = ["src/fastmcp/utilities/ui.py:create_secure_html_response"]
+
+[[case]]
+order = 112
+cve = "CVE-2026-21892"
+project = "Parsl (parsl-visualize)"
+repo = "https://github.com/Parsl/parsl"
+vulnerable = "2c37ae3e75137095302dac5f9cd3ca956cb51a47"
+fixed = "013a928461e70f38a33258bd525a351ed828e974"
+rule = "sqli"
+entry = ["parsl/monitoring/visualization/views.py:workflow_dag_details", "parsl/monitoring/visualization/views.py:workflow_resources"]
+sinks = ["parsl/monitoring/visualization/views.py:workflow_dag_details", "parsl/monitoring/visualization/views.py:workflow_resources"]
