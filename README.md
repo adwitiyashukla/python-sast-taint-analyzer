@@ -55,30 +55,51 @@ A CVE counts as found when pysast reports the right bug class in the sink functi
 
 On the first run pysast found 7 of the 20. I wrote that number down and then looked at the misses. Most of them came from gaps that are not about one app, like routes built with f-strings, FastAPI parameter types, dataclass constructors, `super()` calls, Django form data, a module resolver that matched `import pandas` to a project file called `pandas.py`, and a fallback that skipped sink checks in helpers with a lot of callers. I fixed those as general features, checked that the OWASP numbers did not change, and ran all 20 again.
 
-| CVE | Project | Bug | Found | Gone after fix | Note |
-|---|---|---|---|---|---|
-| CVE-2023-46134 | D-Tale | Code injection | no | - | The sink is `DataFrame.query` on a frame from a global store, and pysast does not know it is a pandas frame |
-| CVE-2024-45601 | Mesop | Path traversal | yes | no | The fixed code still sends the path to `send_file` through the branch used under Bazel, only for .js and .css files |
-| CVE-2023-6831 | MLflow | Path traversal | no | - | Routes come from protobuf descriptors and the artifact store is picked at runtime |
-| CVE-2024-32005 | NiceGUI | Path traversal | yes | yes |  |
-| CVE-2024-10833 | DB-GPT | Path traversal | yes | yes |  |
-| CVE-2023-5002 | pgAdmin 4 | Command injection | yes | no | The fix runs the binary with an argument list, but the user still picks the folder it runs from, and pysast reports that |
-| CVE-2022-24840 | django-s3file | Path traversal | no | - | The sink is Django's storage API on S3, which pysast has no model for |
-| CVE-2022-0697 | Archivy | Open redirect | yes | no | The fix checks the URL in a helper that returns a bool, and pysast does not carry that check back to the caller |
-| CVE-2026-28786 | Open WebUI | Path traversal | no | - | The extension is the text after the last dot, so it has no `..` and the path cannot leave the folder. The advisory's shown impact is the server path in an error message |
-| CVE-2023-1176 | MLflow | Path traversal | no | - | Same as the other MLflow one, and the name also goes through protobuf parsing that fills an object in place |
-| CVE-2025-55149 | TinyScientist | Path traversal | yes | yes |  |
-| CVE-2026-29038 | changedetection.io | XSS | yes | no | The fix is a custom route converter class, and pysast treats unknown converters as any text |
-| CVE-2022-1592 | Scout | SSRF | yes | no | The fix checks the URL against a list stored in the user's session |
-| CVE-2026-34244 | Weblate | SSRF | no | - | The service class is picked from a registry at runtime |
-| CVE-2025-6773 | LightRAG | Path traversal | yes | yes |  |
-| CVE-2026-33440 | Weblate | SSRF | yes | no | Under the default setting any host is still allowed after the fix, so this one should stay |
-| CVE-2026-24779 | vLLM | SSRF | no | - | The request handler is an object stored on `app.state` at startup |
-| CVE-2024-45595 | D-Tale | Code injection | no | - | Same sink as the other D-Tale one |
-| CVE-2025-62800 | FastMCP | XSS | yes | yes |  |
-| CVE-2026-21892 | Parsl | SQL injection | yes | no | The fix only changed `views.py`. The same `'%s'` SQL in `parsl/monitoring/queries/pandas.py` is still called from the route, after a lookup that checks the workflow exists |
+| CVE | Project | Bug | Found | Gone after fix |
+|---|---|---|---|---|
+| CVE-2023-46134 | D-Tale | Code injection | no | - |
+| CVE-2024-45601 | Mesop | Path traversal | yes | no |
+| CVE-2023-6831 | MLflow | Path traversal | no | - |
+| CVE-2024-32005 | NiceGUI | Path traversal | yes | yes |
+| CVE-2024-10833 | DB-GPT | Path traversal | yes | yes |
+| CVE-2023-5002 | pgAdmin 4 | Command injection | yes | no |
+| CVE-2022-24840 | django-s3file | Path traversal | no | - |
+| CVE-2022-0697 | Archivy | Open redirect | yes | no |
+| CVE-2026-28786 | Open WebUI | Path traversal | no | - |
+| CVE-2023-1176 | MLflow | Path traversal | no | - |
+| CVE-2025-55149 | TinyScientist | Path traversal | yes | yes |
+| CVE-2026-29038 | changedetection.io | XSS | yes | no |
+| CVE-2022-1592 | Scout | SSRF | yes | no |
+| CVE-2026-34244 | Weblate | SSRF | no | - |
+| CVE-2025-6773 | LightRAG | Path traversal | yes | yes |
+| CVE-2026-33440 | Weblate | SSRF | yes | no |
+| CVE-2026-24779 | vLLM | SSRF | no | - |
+| CVE-2024-45595 | D-Tale | Code injection | no | - |
+| CVE-2025-62800 | FastMCP | XSS | yes | yes |
+| CVE-2026-21892 | Parsl | SQL injection | yes | no |
 
-pysast now finds 12 of the 20, and for 5 of those 12 the finding is gone on the fixed commit. For the 7 where a finding stays, the note says why. In some of them the same kind of flow is still there after the fix, and in others the fix is a check pysast cannot follow yet, like a helper that returns a bool or a custom route converter. Most of the 8 misses are code that is wired together at runtime, like a class picked from a registry or a handler stored on `app.state`, which pysast does not follow.
+pysast now finds 12 of the 20, and for 5 of those 12 the finding is gone on the fixed commit. For the 7 where a finding stays, the notes below say why. In some of them the same kind of flow is still there after the fix, and in others the fix is a check pysast cannot follow yet, like a helper that returns a bool or a custom route converter. Most of the 8 misses are code that is wired together at runtime, like a class picked from a registry or a handler stored on `app.state`, which pysast does not follow.
+
+The 7 where a finding stays after the fix:
+
+- CVE-2024-45601 (Mesop): The fixed code still sends the path to `send_file` through the branch used under Bazel, only for .js and .css files.
+- CVE-2023-5002 (pgAdmin 4): The fix runs the binary with an argument list, but the user still picks the folder it runs from, and pysast reports that.
+- CVE-2022-0697 (Archivy): The fix checks the URL in a helper that returns a bool, and pysast does not carry that check back to the caller.
+- CVE-2026-29038 (changedetection.io): The fix is a custom route converter class, and pysast treats unknown converters as any text.
+- CVE-2022-1592 (Scout): The fix checks the URL against a list stored in the user's session.
+- CVE-2026-33440 (Weblate): Under the default setting any host is still allowed after the fix, so this one should stay.
+- CVE-2026-21892 (Parsl): The fix only changed `views.py`. The same `'%s'` SQL in `parsl/monitoring/queries/pandas.py` is still called from the route, after a lookup that checks the workflow exists.
+
+The 8 that pysast does not find:
+
+- CVE-2023-46134 (D-Tale): The sink is `DataFrame.query` on a frame from a global store, and pysast does not know it is a pandas frame.
+- CVE-2023-6831 (MLflow): Routes come from protobuf descriptors and the artifact store is picked at runtime.
+- CVE-2022-24840 (django-s3file): The sink is Django's storage API on S3, which pysast has no model for.
+- CVE-2026-28786 (Open WebUI): The extension is the text after the last dot, so it has no `..` and the path cannot leave the folder. The advisory's shown impact is the server path in an error message.
+- CVE-2023-1176 (MLflow): Same as the other MLflow one, and the name also goes through protobuf parsing that fills an object in place.
+- CVE-2026-34244 (Weblate): The service class is picked from a registry at runtime.
+- CVE-2026-24779 (vLLM): The request handler is an object stored on `app.state` at startup.
+- CVE-2024-45595 (D-Tale): Same sink as the other D-Tale one.
 
 ### Speed
 
@@ -138,7 +159,7 @@ permissions:
   contents: read
   security-events: write
 steps:
-  - uses: actions/checkout@v4
+  - uses: actions/checkout@v7
   - uses: adwitiyashukla/python-sast-taint-analyzer@main
     with:
       path: src

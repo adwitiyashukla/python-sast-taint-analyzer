@@ -13,7 +13,7 @@ inputs:
 runs:
   using: composite
   steps:
-    - uses: actions/setup-python@v5
+    - uses: actions/setup-python@v7
       with:
         python-version: "3.13"
     - shell: bash
@@ -26,7 +26,7 @@ runs:
         SCAN_ARGS: ${{ inputs.args }}
       run: pysast scan "$SCAN_PATH" --format sarif --output pysast.sarif --exit-zero $SCAN_ARGS
     - if: inputs.upload == 'true'
-      uses: github/codeql-action/upload-sarif@v3
+      uses: github/codeql-action/upload-sarif@v4
       with:
         sarif_file: pysast.sarif
         category: pysast
