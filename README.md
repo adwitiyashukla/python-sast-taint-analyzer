@@ -139,7 +139,7 @@ permissions:
   security-events: write
 steps:
   - uses: actions/checkout@v4
-  - uses: adwitiyashukla/python-sast-taint-analyzer@v0.1.0
+  - uses: adwitiyashukla/python-sast-taint-analyzer@main
     with:
       path: src
 ```
